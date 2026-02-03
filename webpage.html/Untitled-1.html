@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scrollable Map with Frames and Links</title>
+</head>
+
+<body>
+
+<h1>Scrollable Map with Frames and Hotspots</h1>
+<p>This page demonstrates an embedded interactive map, frames, and navigation links using HTML only.</p>
+
+<hr>
+
+<table width="100%" border="1" cellpadding="10">
+<tr>
+
+    <!-- MAP SECTION -->
+    <td width="50%" valign="top">
+        <h2>Interactive Map</h2>
+        <p>You can scroll, zoom, and move this map.</p>
+
+        <!-- Google Maps Embedded (Scrollable & Zoomable) -->
+        <iframe
+            src="https://www.google.com/maps?q=world&output=embed"
+            width="100%"
+            height="300"
+            frameborder="1"
+            allowfullscreen>
+        </iframe>
+
+        <h3>Map Hotspot Links</h3>
+        <ul>
+            <li><a href="#ny" onclick="loadLocation('newyork')">New York</a></li>
+            <li><a href="#ldn" onclick="loadLocation('london')">London</a></li>
+            <li><a href="#tokyo" onclick="loadLocation('tokyo')">Tokyo</a></li>
+        </ul>
+    </td>
+
+    <!-- FRAME SECTION -->
+    <td width="50%" valign="top">
+        <h2>Information Frame</h2>
+
+        <iframe
+            name="infoFrame"
+            id="infoFrame"
+            width="100%"
+            height="300"
+            frameborder="1">
+        </iframe>
+    </td>
+
+</tr>
+</table>
+
+<hr>
+
+<!-- JAVASCRIPT FOR FRAME CONTENT -->
+<script>
+function loadLocation(place) {
+    var frame = document.getElementById("infoFrame");
+
+    if (place === "newyork") {
+        frame.srcdoc = `
+            <h2>New York</h2>
+            <p>New York City is located in the United States.</p>
+            <p>It is one of the world's major financial and cultural centers.</p>
+        `;
+    }
+    else if (place === "london") {
+        frame.srcdoc = `
+            <h2>London</h2>
+            <p>London is the capital city of the United Kingdom.</p>
+            <p>It is famous for history, culture, and landmarks.</p>
+        `;
+    }
+    else if (place === "tokyo") {
+        frame.srcdoc = `
+            <h2>Tokyo</h2>
+            <p>Tokyo is the capital of Japan.</p>
+            <p>It is one of the most populous metropolitan areas in the world.</p>
+        `;
+    }
+}
+</script>
+
+</body>
+</html>
